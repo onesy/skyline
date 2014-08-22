@@ -1,5 +1,6 @@
 <?php
-/*
+
+/* 
  * The MIT License
  *
  * Copyright 2014 sunyuw <leentingOne@gmail.com https://github.com/onesy/skyline.git>.
@@ -23,42 +24,14 @@
  * THE SOFTWARE.
  */
 /**
- * @filename Function.php 
+ * @filename index.php 
  * @encoding UTF-8 
  * @author sunyuw <leentingOne@gmail.com> 
  * @link https://github.com/onesy/skyline.git 
  * @copyright only free software in my mind 
  * @license http://mit-license.org/licenses/
- * @datetime Aug 22, 2014  4:51:23 PM
+ * @datetime Aug 22, 2014  6:20:51 PM
  * @version 1.0
  * @Description no description yet
- */
+  */
 
-class Skyline_Guider {
-    
-     protected static $http_host = "";
-    
-    // 计划这里添加方法注册钩子
-    
-    public function pleaseGuideMe()
-    {
-        global $global_root_server;
-        self::setHttpHost($global_root_server['http_host']);
-        $index_file_path = self::getHttpHost() . DIRECTORY_SEPARATOR . 'index.php';
-        if (!file_exists($index_file_path)) {
-            echo "Guide Faild: can not find index file $index_file_path , please check your configure!";
-            die;
-        }
-        include $index_file_path;
-    }
-    
-    public static function getHttpHost()
-    {
-        return self::$http_host;
-    }
-    
-    public static function setHttpHost($http_host)
-    {
-        self::$http_host = $http_host;
-    }
-}
