@@ -1,0 +1,3 @@
+[submodule "fig-standards"]
+	path = fig-standards
+	url = https://github.com/hfcorriez/fig-standards.git
