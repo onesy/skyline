@@ -1,5 +1,4 @@
 <?php
-
 /*
  * The MIT License
  *
@@ -23,7 +22,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 /**
  * @filename Function.php 
  * @encoding UTF-8 
@@ -35,11 +33,3 @@
  * @version 1.0
  * @Description no description yet
  */
-error_reporting(E_ALL);
-
-global $global_root_server;
-global $global_cfg;
-// 这里还并不需要引入框架，框架由每个app视自己的使用情景部分引入。
-define("ROOT_PROJECT_PATH", dirname(__DIR__));
-define("SKY_LINE_PATH", ROOT_PROJECT_PATH . DIRECTORY_SEPARATOR . 'Skyline');
-define("GUIDER_PATH", SKY_LINE_PATH . DIRECTORY_SEPARATOR . 'Guider.class.php'); // 定义请求引导类路径

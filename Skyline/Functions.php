@@ -25,21 +25,56 @@
  */
 
 /**
- * @filename Function.php 
+ * @filename Functions.php 
  * @encoding UTF-8 
  * @author sunyuw <leentingOne@gmail.com> 
  * @link https://github.com/onesy/skyline.git 
  * @copyright only free software in my mind 
  * @license http://mit-license.org/licenses/
- * @datetime Aug 22, 2014  4:51:23 PM
+ * @datetime Aug 22, 2014  4:58:09 PM
  * @version 1.0
- * @Description no description yet
+ * @Description 注册一些必备的方法
  */
-error_reporting(E_ALL);
+/**
+ * Sunyuw - 处理请求的参数
+ * 
+ * @param int  $type
+ * @param type $varname
+ * 
+ * @return type
+ */
+function filterInput($type, $varname)
+{
+    $post_var = filter_input(INPUT_POST, $varname);
 
-global $global_root_server;
-global $global_cfg;
-// 这里还并不需要引入框架，框架由每个app视自己的使用情景部分引入。
-define("ROOT_PROJECT_PATH", dirname(__DIR__));
-define("SKY_LINE_PATH", ROOT_PROJECT_PATH . DIRECTORY_SEPARATOR . 'Skyline');
-define("GUIDER_PATH", SKY_LINE_PATH . DIRECTORY_SEPARATOR . 'Guider.class.php'); // 定义请求引导类路径
+    $get_var = filter_input(INPUT_GET, $varname);
+
+    if ($type == INPUT_GET) {
+        return $get_var;
+    } elseif ($type == INPUT_POST) {
+        return $post_var;
+    } elseif ($type == INPUT_REQUEST) {
+        $request = $post_var ? $post_var : $get_var;
+        return $request;
+    }
+}
+
+function registAccessRoute() {
+    // 直接利用$_SERVER['HTTP_HOST'] 做分发
+    global $global_root_server;
+    $global_root_server['http_host']= strtolower(filter_input("INPUT_SERVER", 'HTTP_HOST'));
+}
+
+function GetSessionInt($r,$default=0){
+    return isset($_SESSION[$r]) ? intval($_SESSION[$r]) : $default;
+}
+function GetSessionFloat($r,$default=0){
+    return isset($_SESSION[$r]) ? floatval($_SESSION[$r]) : $default;
+}
+function GetSession($r,$default=null){
+    return isset($_SESSION[$r]) ? $_SESSION[$r] : $default;
+}
+
+function GetCookie($n, $def = null){
+    return isset(filter_input("INPUT_COOKIE", $n)) ? filter_input("INPUT_COOKIE", $n) : $def;
+}

@@ -1,0 +1,1 @@
+请求请指向project的index.php
