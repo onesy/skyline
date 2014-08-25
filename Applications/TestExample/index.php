@@ -35,3 +35,7 @@
  * @Description no description yet
   */
 
+// 初始化classloader加载来路径
+$controller_path = __DIR__ . DIRECTORY_SEPARATOR . 'Controllers';
+// 初始化第三方插件导入
+// 导入框架
